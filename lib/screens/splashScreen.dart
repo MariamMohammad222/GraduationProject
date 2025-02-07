@@ -1,15 +1,31 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-class TcareScreen extends StatelessWidget {
+import 'package:projectgraduation/screens/onboardingPage.dart';
+import 'package:projectgraduation/views/colorview.dart';
+class TcareScreen extends StatefulWidget {
+  @override
+  State<TcareScreen> createState() => _TcareScreenState();
+}
+
+class _TcareScreenState extends State<TcareScreen> {
+  void initState() {
+    super.initState();
+    Timer(const Duration(seconds: 15),(){
+      Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder:(context) => OnboardingScreen()),(route) => false);
+
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[800], // لون الخلفية الأزرق
+      backgroundColor: AppUI.colorPrimary, // لون الخلفية الأزرق
       body: Container(
                decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color.fromARGB(48, 81, 156, 1),
-              Color(0X07173C), // لون أزرق داكن (بداية التدرج)
+              AppUI.colorSeconder,
+              AppUI.colorPrimary, // لون أزرق داكن (بداية التدرج)
               // لون أفتح (نهاية التدرج)
             ],
             begin: Alignment.topCenter, // التدرج يبدأ من الأعلى
