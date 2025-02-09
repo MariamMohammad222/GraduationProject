@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projectgraduation/screens/onboardingPage.dart';
+import 'package:projectgraduation/screens/signUppage.dart';
 import 'package:projectgraduation/screens/splashScreen.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
      
-      home:TcareScreen()
+      home:SignUpScreen()
     );
   }
 }
