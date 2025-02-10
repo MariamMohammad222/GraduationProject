@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:projectgraduation/views/colorview.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
   final IconData icon;
   final bool isPassword;
   final TextEditingController? controller;
+  final String? Function(String?)? validator;
+  final Function(String)? onChanged;
 
   const CustomTextField({
     super.key,
@@ -13,42 +14,39 @@ class CustomTextField extends StatelessWidget {
     required this.icon,
     this.isPassword = false,
     this.controller,
+    this.validator,
+    this.onChanged,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Container(
-        height: 55,
-        child: TextFormField(
-          controller: controller,
-          obscureText: isPassword,
-          decoration: InputDecoration(
-            prefixIcon: Icon(icon, color: Colors.grey),
-            hintText: hintText,
-            filled: true,
-            fillColor: Colors.white,
-            // border: OutlineInputBorder(
-            //   borderRadius: BorderRadius.circular(22),
-            //   borderSide: BorderSide.none,
-            // ),
-            focusedBorder: OutlineInputBorder( 
-              borderRadius: BorderRadius.circular(16),
-              borderSide: BorderSide( 
-                color: AppUI.colorSeconder
-              ),
-              
+      child: TextFormField(
+        controller: controller,
+        obscureText: isPassword,
+        onChanged: onChanged, // تحديث القيم
+        validator: validator, // التحقق من صحة البيانات
+        decoration: InputDecoration(
+          prefixIcon: Icon(icon, color: Colors.grey),
+          hintText: hintText,
+          filled: true,
+          fillColor: Colors.white,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(
+              color: Colors.blue, // استبدلي بـ AppUI.colorSeconder إن كان معرفًا
             ),
-            enabledBorder:  OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16), 
-              borderSide: BorderSide( 
-                color: AppUI.colorSeconder
-              ),
-            )
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(
+              color: Colors.blue, // استبدلي بـ AppUI.colorSeconder إن كان معرفًا
+            ),
           ),
         ),
       ),
     );
   }
 }
+

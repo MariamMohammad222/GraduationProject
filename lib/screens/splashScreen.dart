@@ -11,7 +11,7 @@ class TcareScreen extends StatefulWidget {
 class _TcareScreenState extends State<TcareScreen> {
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 15),(){
+    Timer(const Duration(seconds: 20),(){
       Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder:(context) => OnboardingScreen()),(route) => false);
 
     });
@@ -19,17 +19,17 @@ class _TcareScreenState extends State<TcareScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppUI.colorPrimary, // لون الخلفية الأزرق
+      backgroundColor: AppUI.colorPrimary, 
       body: Container(
                decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
               AppUI.colorSeconder,
-              AppUI.colorPrimary, // لون أزرق داكن (بداية التدرج)
-              // لون أفتح (نهاية التدرج)
+              AppUI.colorPrimary, 
+              
             ],
-            begin: Alignment.topCenter, // التدرج يبدأ من الأعلى
-            end: Alignment.bottomCenter, // التدرج ينتهي في الأسفل
+            begin: Alignment.topCenter, 
+            end: Alignment.bottomCenter, 
           ),
                ),
 
@@ -55,7 +55,7 @@ class _TcareScreenState extends State<TcareScreen> {
                 
                   
                   Image.asset(
-                    'assets/images/Group 39 (1).png', // صورة القفاز
+                    'assets/images/Group 39 (1).png', 
                     width: 450
                   ),
                 ],

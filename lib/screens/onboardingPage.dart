@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projectgraduation/models/onboardingModel.dart';
 import 'package:projectgraduation/screens/homescreen.dart';
+import 'package:projectgraduation/screens/loginScreen.dart';
 import 'package:projectgraduation/views/colorview.dart';
 import 'package:projectgraduation/widgets/onboardingWidget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -118,7 +119,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pushReplacement(
-                          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                          context, MaterialPageRoute(builder: (context) => login()));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppUI.colorPrimary,
