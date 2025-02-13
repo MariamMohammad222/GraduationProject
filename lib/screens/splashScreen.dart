@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:projectgraduation/screens/onboardingPage.dart';
-import 'package:projectgraduation/views/colorview.dart';
+import 'package:projectgraduation/constants/colorview.dart';
 class TcareScreen extends StatefulWidget {
   @override
   State<TcareScreen> createState() => _TcareScreenState();

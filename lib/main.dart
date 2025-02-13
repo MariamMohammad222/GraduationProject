@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:projectgraduation/firebase_options.dart';
+import 'package:projectgraduation/screens/fillinformationpage.dart';
 import 'package:projectgraduation/screens/homescreen.dart';
 import 'package:projectgraduation/screens/loginScreen.dart';
 import 'package:projectgraduation/screens/onboardingPage.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         SignUpScreen().id: (context) => SignUpScreen(),
         HomeScreen().id: (context) => HomeScreen(),
       },
-      home: TcareScreen()
+      home:UserFormScreen()
     );
   }
 }

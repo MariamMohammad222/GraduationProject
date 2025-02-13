@@ -39,6 +39,8 @@ dependencies:
   firebase_core: ^2.27.0
   firebase_auth: ^4.17.8
   cloud_firestore: ^4.15.8
+  country_picker: ^2.0.27
+  image_picker: ^1.0.7
 
 dev_dependencies:
   flutter_test:
@@ -82,6 +84,7 @@ flutter:
     - family: TimesNewRoman
       fonts:
         - asset: assets/fonts/Times New Roman Regular.ttf
+        - asset: assets/fonts/arial.ttf
        
   #         style: italic
   #   - family: Trajan Pro

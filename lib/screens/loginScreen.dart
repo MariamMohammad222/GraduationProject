@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:projectgraduation/screens/homescreen.dart';
 import 'package:projectgraduation/screens/signUppage.dart';
-import 'package:projectgraduation/views/colorview.dart';
+import 'package:projectgraduation/constants/colorview.dart';
 import 'package:projectgraduation/widgets/textfieldwidget.dart';
 class login extends StatefulWidget {
   const login ({super.key});
@@ -19,7 +19,8 @@ class _LoginScreenState extends State<login> {
   final TextEditingController _passwordController = TextEditingController();
   bool _isLoading = false;
 
-  Future<void> _login() async {
+  Future<void> _login() async 
+  {
     if (!_formKey.currentState!.validate()) return;
 
     setState(() {
@@ -39,7 +40,7 @@ class _LoginScreenState extends State<login> {
           .get();
 
       if (!userDoc.exists) {
-        throw Exception("User not found in database");
+        throw Exception("User not found ");
       }
 
       // عرض رسالة نجاح
@@ -47,8 +48,8 @@ class _LoginScreenState extends State<login> {
         const SnackBar(content: Text('Login successful!')),
       );
 
-      // الانتقال إلى الصفحة الرئيسية بعد تسجيل الدخول
-      Navigator.pushReplacementNamed(context, HomeScreen().id); // غيّري '/home' حسب شاشتك الرئيسية
+      
+      Navigator.pushReplacementNamed(context, HomeScreen().id); 
 
     } on FirebaseAuthException catch (e) {
       String errorMessage = "An error occurred, please try again!";

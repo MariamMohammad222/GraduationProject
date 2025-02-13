@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projectgraduation/models/onboardingModel.dart';
-import 'package:projectgraduation/views/colorview.dart';
+import 'package:projectgraduation/constants/colorview.dart';
 
 class onboardingWidget extends StatelessWidget {
    onboardingWidget({

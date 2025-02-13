@@ -4,7 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:projectgraduation/screens/homescreen.dart';
 import 'package:projectgraduation/screens/loginScreen.dart';
-import 'package:projectgraduation/views/colorview.dart';
+import 'package:projectgraduation/constants/colorview.dart';
+import 'package:projectgraduation/widgets/appbarwidget.dart';
 import 'package:projectgraduation/widgets/textfieldwidget.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -76,24 +77,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding:  EdgeInsets.symmetric(horizontal: 24),
           child: Form(
             key: _formKey,
             child: Column(
-              children: [
+              children:[
                 const SizedBox(height: 20),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Text(
-                    'Tcare',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontFamily: "TimesNewRoman",
-                      fontWeight: FontWeight.bold,
-                      color: AppUI.colorSeconder,
-                    ),
-                  ),
-                ),
+                  Appbarwidget(),
                 const SizedBox(height: 90),
                 Text(
                   "Sign up",

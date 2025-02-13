@@ -7,4 +7,5 @@ class AppUI {
   static final colorBackground = Color(0xffffffff);
   static final colorgray = Color(0xffF4F4F4);
   static final colorpinky= Color(0xffF3A7CB);
+  static final fontarial ='Arial';
 }
