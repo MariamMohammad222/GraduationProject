@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projectgraduation/constants/colorview.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
@@ -34,14 +35,14 @@ class CustomTextField extends StatelessWidget {
           fillColor: Colors.white,
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
-            borderSide: const BorderSide(
-              color: Colors.blue, // استبدلي بـ AppUI.colorSeconder إن كان معرفًا
+            borderSide:  BorderSide(
+              color: AppUI.colorSeconder, // استبدلي بـ AppUI.colorSeconder إن كان معرفًا
             ),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
-            borderSide: const BorderSide(
-              color: Colors.blue, // استبدلي بـ AppUI.colorSeconder إن كان معرفًا
+            borderSide:  BorderSide(
+              color: Colors.grey, // استبدلي بـ AppUI.colorSeconder إن كان معرفًا
             ),
           ),
         ),

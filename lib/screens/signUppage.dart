@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:projectgraduation/screens/fillinformationpage.dart';
 import 'package:projectgraduation/screens/homescreen.dart';
 import 'package:projectgraduation/screens/loginScreen.dart';
 import 'package:projectgraduation/constants/colorview.dart';
@@ -50,7 +51,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
       );
 
       
-      Navigator.pushReplacementNamed(context, HomeScreen().id);
+     Navigator.pushReplacement(
+  context,
+  MaterialPageRoute(
+    builder: (context) => UserFormScreen(userId: userCredential.user!.uid),
+  ),
+);
     } on FirebaseAuthException catch (e) {
       String errorMessage = "An error occurred, please try again!";
       if (e.code == 'weak-password') {
@@ -127,7 +133,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   isPassword: true,
                   onChanged: (value) => confirmPassword = value,
                   validator: (value) =>
-                      value != password ? "Passwords do not match" : null,
+                      value != password ? "Passwords dosent match" : null,
                 ),
 
                 const SizedBox(height: 20),

@@ -41,6 +41,8 @@ dependencies:
   cloud_firestore: ^4.15.8
   country_picker: ^2.0.27
   image_picker: ^1.0.7
+  google_api_availability: ^5.0.0
+  path_provider: ^2.1.4
 
 dev_dependencies:
   flutter_test:

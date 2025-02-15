@@ -2,20 +2,24 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:projectgraduation/firebase_options.dart';
 import 'package:projectgraduation/screens/fillinformationpage.dart';
+import 'package:projectgraduation/screens/fillrelativesInformation.dart';
 import 'package:projectgraduation/screens/homescreen.dart';
 import 'package:projectgraduation/screens/loginScreen.dart';
 import 'package:projectgraduation/screens/onboardingPage.dart';
 import 'package:projectgraduation/screens/signUppage.dart';
 import 'package:projectgraduation/screens/splashScreen.dart';
+import 'package:google_api_availability/google_api_availability.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();  // ✅ تأكد من تهيئة الـ binding أولًا
+  WidgetsFlutterBinding.ensureInitialized();  
   
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+   GoogleApiAvailability apiAvailability = GoogleApiAvailability.instance;
+  GooglePlayServicesAvailability status = await apiAvailability.checkGooglePlayServicesAvailability();
 
-  runApp(const MyApp());  // ✅ تأكد من تشغيل التطبيق بعد التهيئة
+  runApp(const MyApp());  
 }
 
 class MyApp extends StatelessWidget {
@@ -29,8 +33,9 @@ class MyApp extends StatelessWidget {
         login().id: (context) => login(),
         SignUpScreen().id: (context) => SignUpScreen(),
         HomeScreen().id: (context) => HomeScreen(),
+      
       },
-      home:UserFormScreen()
+      home:RelativesScreen(),
     );
   }
 }
