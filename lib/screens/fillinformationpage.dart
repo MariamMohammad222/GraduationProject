@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:projectgraduation/constants/colorview.dart';
+import 'package:projectgraduation/screens/fillrelativesInformation.dart';
 import 'package:projectgraduation/screens/homescreen.dart';
 import 'package:projectgraduation/widgets/camerawidget.dart';
 import 'package:projectgraduation/widgets/countrywidget.dart';
@@ -240,7 +241,9 @@ class _UserFormScreenState extends State<UserFormScreen> {
               GestureDetector(
                   onTap: () {
                     _saveUserData();
-                    Navigator.pushNamed(context, HomeScreen().id);
+                    Navigator.push(context,MaterialPageRoute(builder:(context) {
+                      return RelativesScreen(userId:widget.userId  );
+                    },));
                   },
                   child: nextwidget()),
             ],
