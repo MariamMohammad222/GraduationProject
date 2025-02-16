@@ -1,18 +1,14 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:projectgraduation/constants/colorview.dart';
-
+import 'package:projectgraduation/screens/homescreen.dart';
 class RelativesScreen extends StatefulWidget {
   const RelativesScreen({super.key, required this.userId});
   final String userId;
   @override
   State<RelativesScreen> createState() => _RelativesScreenState();
 }
-
 class _RelativesScreenState extends State<RelativesScreen> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -72,12 +68,10 @@ try {
 
   }, SetOptions(merge: true));
 
-  ScaffoldMessenger.of(context).showSnackBar(
-    const SnackBar(
-      content: Text('Relatives saved successfully'),
-      backgroundColor: Colors.green,
-    ),
-  );
+ 
+  Navigator.push(context,MaterialPageRoute(builder:(context) {
+    return HomeScreen();
+  },));
 } catch (e) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(

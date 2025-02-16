@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:projectgraduation/constants/colorview.dart';
@@ -21,11 +22,12 @@ class UserFormScreen extends StatefulWidget {
 }
 
 class _UserFormScreenState extends State<UserFormScreen> {
-  String? selectedCountry = 'country';
+  String? selectedCountry;
   int selectedAge = 18;
   String? selectedGender;
   String otherDisease = "";
   List<String> chronicDiseases = [];
+  final TextEditingController phoneController = TextEditingController();
 
   final List<int> ageOptions = List.generate(80, (index) => index + 18);
   final List<String> diseases = [
@@ -44,6 +46,7 @@ class _UserFormScreenState extends State<UserFormScreen> {
       'country': selectedCountry,
       'age': selectedAge,
       'gender': selectedGender,
+      'phone': phoneController.text, // إضافة رقم الهاتف
       'chronicDiseases': chronicDiseases,
     }).then((_) {
       print("User Data Saved!");
@@ -72,48 +75,81 @@ class _UserFormScreenState extends State<UserFormScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(child: CameraWidget(userId: 'user_id')),
+              Center(child: CameraWidget(userId: widget.userId)),
               SizedBox(height: 20),
+
+              // رقم الهاتف
               Text("Number",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontFamily: AppUI.fontarial,
                       fontSize: 18)),
-                        SizedBox(height: 8,),
+              SizedBox(height: 8),
               TextFormField(
-                style: TextStyle(fontSize:16,fontWeight: FontWeight.w500),
-                
+                controller: phoneController,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
-                  hintText: 'phone number',
+                  hintText: 'Phone number',
                   prefixIcon: Icon(Icons.phone),
                   border: OutlineInputBorder(
-                    
                       borderRadius: BorderRadius.circular(8)),
                 ),
               ),
+
               SizedBox(height: 15),
+
+              // اختيار الدولة
               Text("Country",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontFamily: AppUI.fontarial,
                       fontSize: 18)),
-                        SizedBox(height: 8,),
-              country(),
+              SizedBox(height: 8),
+              InkWell(
+                onTap: () {
+                  showCountryPicker(
+                    context: context,
+                    showPhoneCode: false,
+                    onSelect: (Country country) {
+                      setState(() {
+                        selectedCountry = country.name;
+                      });
+                    },
+                  );
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(selectedCountry ?? "Select Country",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
+                      Icon(Icons.arrow_drop_down),
+                    ],
+                  ),
+                ),
+              ),
+
               SizedBox(height: 15),
+
+              // اختيار العمر
               Text("Age",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontFamily: AppUI.fontarial,
                       fontSize: 18)),
-                        SizedBox(height: 8,),
+              SizedBox(height: 8),
               DropdownButtonFormField<int>(
                 value: selectedAge,
                 items: ageOptions
                     .map((age) => DropdownMenuItem(
                           value: age,
                           child: Text(age.toString(),
-                              style: TextStyle(fontSize:16,fontWeight: FontWeight.w500)),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                         ))
                     .toList(),
                 onChanged: (value) => setState(() => selectedAge = value!),
@@ -121,75 +157,67 @@ class _UserFormScreenState extends State<UserFormScreen> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8))),
               ),
+
               SizedBox(height: 18),
+
+              // اختيار الجنس
               Text("Gender",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontFamily: AppUI.fontarial,
                       fontSize: 18)),
-               SizedBox(height: 8,),
-                 Row(
-                 
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: 55,
-                
-                        decoration: BoxDecoration( 
-                          borderRadius: BorderRadius.circular(0),
-                          
-                        ),
-                        child: TextButton(
-                          onPressed: () => setState(() => selectedGender = "Male"),
-                          style: ButtonStyle(
-                            
-                            backgroundColor: MaterialStateProperty.all(
-                              selectedGender == "Male"
-                                  ? AppUI.colorPrimary
-                                  : Colors.grey[200],
-                            ),
-                            foregroundColor: MaterialStateProperty.all(
-                              selectedGender == "Male"
-                                  ? Colors.white
-                                  : Colors.black,
-                            ),
+              SizedBox(height: 8),
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 55,
+                      child: TextButton(
+                        onPressed: () => setState(() => selectedGender = "Male"),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                            selectedGender == "Male"
+                                ? AppUI.colorPrimary
+                                : Colors.grey[200],
                           ),
-                          child: Text("Male"),
+                          foregroundColor: MaterialStateProperty.all(
+                            selectedGender == "Male"
+                                ? Colors.white
+                                : Colors.black,
+                          ),
                         ),
+                        child: Text("Male"),
                       ),
                     ),
-                    SizedBox(width: 90,),
-                    Expanded(
-                      child:  Container(
-                        height: 55,
-                
-                        decoration: BoxDecoration( 
-                          borderRadius: BorderRadius.circular(0),
-                          
-                        ),
-                        child: TextButton(
-                          onPressed: () => setState(() => selectedGender = "Female"),
-                          style: ButtonStyle(
-                            
-                            backgroundColor: MaterialStateProperty.all(
-                              selectedGender == "Female"
-                                  ? AppUI.colorPrimary
-                                  : Colors.grey[200],
-                            ),
-                            foregroundColor: MaterialStateProperty.all(
-                              selectedGender == "Female"
-                                  ? Colors.white
-                                  : Colors.black,
-                            ),
+                  ),
+                  SizedBox(width: 20),
+                  Expanded(
+                    child: Container(
+                      height: 55,
+                      child: TextButton(
+                        onPressed: () => setState(() => selectedGender = "Female"),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                            selectedGender == "Female"
+                                ? AppUI.colorPrimary
+                                : Colors.grey[200],
                           ),
-                          child: Text("Female"),
+                          foregroundColor: MaterialStateProperty.all(
+                            selectedGender == "Female"
+                                ? Colors.white
+                                : Colors.black,
+                          ),
                         ),
+                        child: Text("Female"),
                       ),
                     ),
-                  ],
-                ),
-              
+                  ),
+                ],
+              ),
+
               SizedBox(height: 15),
+
+              // اختيار الأمراض المزمنة
               Text("Select Your Chronic Diseases",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -212,6 +240,8 @@ class _UserFormScreenState extends State<UserFormScreen> {
                   );
                 }).toList(),
               ),
+
+              // إدخال مرض آخر
               if (chronicDiseases.contains("Other"))
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -224,12 +254,10 @@ class _UserFormScreenState extends State<UserFormScreen> {
                       setState(() {
                         otherDisease = value;
                         if (value.isNotEmpty) {
-                         
                           if (!chronicDiseases.contains(value)) {
                             chronicDiseases.add(value);
                           }
                         } else {
-                          
                           chronicDiseases.removeWhere((disease) =>
                               disease != "Other" && disease == otherDisease);
                         }
@@ -237,15 +265,21 @@ class _UserFormScreenState extends State<UserFormScreen> {
                     },
                   ),
                 ),
+
               SizedBox(height: 20),
+
               GestureDetector(
-                  onTap: () {
-                    _saveUserData();
-                    Navigator.push(context,MaterialPageRoute(builder:(context) {
-                      return RelativesScreen(userId:widget.userId  );
-                    },));
-                  },
-                  child: nextwidget()),
+                onTap: () {
+                  _saveUserData();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) {
+                      return RelativesScreen(userId: widget.userId);
+                    }),
+                  );
+                },
+                child: nextwidget(),
+              ),
             ],
           ),
         ),
