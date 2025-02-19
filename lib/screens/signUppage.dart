@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:projectgraduation/screens/fillinformationpage.dart';
-import 'package:projectgraduation/screens/homescreen.dart';
+import 'package:projectgraduation/screens/mainScreen.dart';
 import 'package:projectgraduation/screens/loginScreen.dart';
 import 'package:projectgraduation/constants/colorview.dart';
 import 'package:projectgraduation/widgets/appbarwidget.dart';

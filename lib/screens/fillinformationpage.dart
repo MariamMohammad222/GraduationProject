@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:projectgraduation/constants/colorview.dart';
 import 'package:projectgraduation/screens/fillrelativesInformation.dart';
-import 'package:projectgraduation/screens/homescreen.dart';
+import 'package:projectgraduation/screens/mainScreen.dart';
 import 'package:projectgraduation/widgets/camerawidget.dart';
 import 'package:projectgraduation/widgets/countrywidget.dart';
 import 'package:projectgraduation/widgets/nextbutton.dart';

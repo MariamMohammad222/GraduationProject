@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:projectgraduation/constants/colorview.dart';
-import 'package:projectgraduation/screens/homescreen.dart';
+import 'package:projectgraduation/screens/homePageScreen.dart';
+import 'package:projectgraduation/screens/profilePage.dart';
+import 'package:projectgraduation/screens/mainScreen.dart';
 class RelativesScreen extends StatefulWidget {
   const RelativesScreen({super.key, required this.userId});
   final String userId;
@@ -70,7 +72,7 @@ try {
 
  
   Navigator.push(context,MaterialPageRoute(builder:(context) {
-    return HomeScreen();
+    return MainScreen();
   },));
 } catch (e) {
   ScaffoldMessenger.of(context).showSnackBar(

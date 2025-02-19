@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:projectgraduation/screens/homescreen.dart';
+import 'package:projectgraduation/screens/homePageScreen.dart';
+import 'package:projectgraduation/screens/profilePage.dart';
+import 'package:projectgraduation/screens/mainScreen.dart';
 import 'package:projectgraduation/screens/signUppage.dart';
 import 'package:projectgraduation/constants/colorview.dart';
 import 'package:projectgraduation/widgets/textfieldwidget.dart';
@@ -49,7 +51,7 @@ class _LoginScreenState extends State<login> {
       );
 
       
-      Navigator.pushReplacementNamed(context, HomeScreen().id); 
+      Navigator.pushReplacementNamed(context, MainScreen().id); 
 
     } on FirebaseAuthException catch (e) {
       String errorMessage = "An error occurred, please try again!";

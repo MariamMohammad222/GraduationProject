@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:projectgraduation/firebase_options.dart';
 import 'package:projectgraduation/screens/fillinformationpage.dart';
 import 'package:projectgraduation/screens/fillrelativesInformation.dart';
-import 'package:projectgraduation/screens/homescreen.dart';
+import 'package:projectgraduation/screens/homePageScreen.dart';
+import 'package:projectgraduation/screens/profilePage.dart';
+import 'package:projectgraduation/screens/mainScreen.dart';
 import 'package:projectgraduation/screens/loginScreen.dart';
 import 'package:projectgraduation/screens/onboardingPage.dart';
 import 'package:projectgraduation/screens/signUppage.dart';
@@ -28,14 +30,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+       theme: ThemeData(
+        primaryColor: const Color(0xFF1a237e),
+        //scaffoldBackgroundColor: const Color(0xFF1a237e),
+      ),
       debugShowCheckedModeBanner: false,
       routes: {
         login().id: (context) => login(),
         SignUpScreen().id: (context) => SignUpScreen(),
         HomeScreen().id: (context) => HomeScreen(),
+         MainScreen().id: (context) => MainScreen(),
       
       },
-      home:SignUpScreen(),
+      home:MainScreen(),
     );
   }
 }

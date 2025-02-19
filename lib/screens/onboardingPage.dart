@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projectgraduation/models/onboardingModel.dart';
-import 'package:projectgraduation/screens/homescreen.dart';
+import 'package:projectgraduation/screens/profilePage.dart';
+import 'package:projectgraduation/screens/mainScreen.dart';
 import 'package:projectgraduation/screens/loginScreen.dart';
 import 'package:projectgraduation/constants/colorview.dart';
 import 'package:projectgraduation/widgets/onboardingWidget.dart';
@@ -44,7 +45,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           duration: Duration(milliseconds: 500), curve: Curves.ease);
     } else {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+          context, MaterialPageRoute(builder: (context) =>  MainScreen()));
     }
   }
 

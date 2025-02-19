@@ -1,14 +1,14 @@
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
+class  ProfilePage extends StatefulWidget {
   final String id='page id';
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _ProfilePageState createState() => _ProfilePageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _ProfilePageState extends State< ProfilePage> {
   Map<String, dynamic>? userData;
   bool isLoading = true;
 
@@ -139,16 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xFF1a4b8f),
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white54,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.notifications), label: "Alerts"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-        ],
-      ),
+    
     );
   }
 
