@@ -1,11 +1,11 @@
 buildscript {
-    ext.kotlin_version = '1.7.10'
+    ext.kotlin_version = '1.9.0' // أو 1.8.22 لو عاوزة تبقي على إصدار أقدم شوية
     repositories {
         google()
         mavenCentral()
     }
-
     dependencies {
+        classpath "com.android.tools.build:gradle:8.0.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -20,11 +20,15 @@ allprojects {
 rootProject.buildDir = '../build'
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-subprojects {
     project.evaluationDependsOn(':app')
 }
 
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions {
+        jvmTarget = "1.8"  // أو "17" لو حابة تستخدمي Java 17
+    }
 }

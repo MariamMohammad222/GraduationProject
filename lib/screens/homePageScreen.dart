@@ -14,13 +14,13 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
           child: Column(
             children: [
-              // Top section with time and profile
+             
               Padding(
                 padding: const EdgeInsets.only(bottom: 24.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Time
+                    
                     const Text(
                       '11:11',
                       style: TextStyle(
@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    // Profile section
+                    
                     Row(
                       children: [
                         Column(
@@ -79,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               
-              // Health Score Circle
+             
               Stack(
                 alignment: Alignment.center,
                 children: [
@@ -157,7 +157,7 @@ class HomeScreen extends StatelessWidget {
 
               const SizedBox(height: 24),
               
-              // Health Metrics Row
+              
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
