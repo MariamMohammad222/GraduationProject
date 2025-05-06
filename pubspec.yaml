@@ -47,9 +47,9 @@ dependencies:
   equatable: ^2.0.7
   curved_navigation_bar: ^1.0.3
   tflite_flutter: ^0.9.1
+  tensorflow_lite_flutter: ^2.0.1
   
-  tflite_flutter_helper:
-    path: packages/tflite_flutter_helper
+    
   
   
 
@@ -81,6 +81,7 @@ flutter:
     - assets/images/
     - assets/images/not-removebg-preview 1.png
     - assets/models/
+    - assets/models/temperature_model1.tflite
     
     
 
